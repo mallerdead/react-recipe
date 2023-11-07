@@ -1,0 +1,9 @@
+.headerButton {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.headerButton span {
+  text-transform: uppercase;
+}

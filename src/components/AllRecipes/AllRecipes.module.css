@@ -1,0 +1,7 @@
+.allRecipes {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: calc(100% - 20px);
+  padding-top: 20px;
+}

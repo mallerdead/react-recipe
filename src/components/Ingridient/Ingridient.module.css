@@ -1,0 +1,9 @@
+.ingridient {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.ingridient span {
+  font-size: 18px;
+}

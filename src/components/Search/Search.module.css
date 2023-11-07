@@ -1,0 +1,30 @@
+.search {
+  position: relative;
+  display: flex;
+  column-gap: 10px;
+  width: 350px;
+}
+
+.search input {
+  width: 220px;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 10px;
+  background-color: #fff;
+}
+
+.searchBtn {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  color: #fff;
+  padding: 8px 25px;
+  border-radius: 20px;
+}
+
+.searchBtn span {
+  font-size: 20px;
+}

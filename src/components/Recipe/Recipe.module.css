@@ -1,0 +1,24 @@
+.recipe {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.recipe.active {
+  background-color: #f9f5f3;
+}
+
+.recipePreview {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.name {
+  text-transform: uppercase;
+}

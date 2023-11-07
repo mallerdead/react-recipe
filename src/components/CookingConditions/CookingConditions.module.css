@@ -1,0 +1,6 @@
+.condition {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  text-transform: uppercase;
+}

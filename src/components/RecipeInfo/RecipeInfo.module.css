@@ -1,0 +1,68 @@
+.recipeInfo {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+}
+
+.recipePreview {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.recipePreview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, rgba(251, 219, 137, 0), rgba(244, 137, 130, 1));
+}
+.recipeName {
+  position: absolute;
+  bottom: 20px;
+  left: calc(50%);
+  transform: rotate(-5deg) translate(-50%, -50%);
+  color: white;
+  background-image: linear-gradient(to right bottom, #fbdb89a1, #f48982);
+  font-size: 30px;
+  padding: 5px 10px;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f5f3;
+  padding: 40px 50px;
+}
+
+.conditions {
+  display: flex;
+  column-gap: 30px;
+}
+
+.addBookmark {
+  background-image: linear-gradient(to right bottom, #fbdb89a1, #f48982);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.recipeIngridients {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2efee;
+  padding: 50px 20px 0 20px;
+}
+
+.recipeIngridientTitle {
+  font-size: 20px;
+  color: #f48982;
+  margin-bottom: 30px;
+}
