@@ -9,7 +9,7 @@ const DUMMY_RECIPE = [
     imageUrl: '/src/assets/chickenBurger.jpg',
     cookTime: 90,
     serving: 4,
-    isBooked: false,
+    isBooked: true,
     recipeIngridients: ['Piece of chicken', 'Bulka dlya burger 2', 'Pincle'],
     isOpen: true,
   },
@@ -19,7 +19,7 @@ const DUMMY_RECIPE = [
     imageUrl: '/src/assets/beefBurger.jpg',
     cookTime: 120,
     serving: 4,
-    isBooked: false,
+    isBooked: true,
     recipeIngridients: ['Piece of beef', 'Bulka dlya burger 2', 'Pincle'],
     isOpen: false,
   },
@@ -106,7 +106,10 @@ const DUMMY_RECIPE = [
 ]
 
 export const Layout = () => {
+  const [visibleRecipes, setVisibleRecipes] = useState()
   const [recipes, setRecipes] = useState(DUMMY_RECIPE)
+  const [search, setSearch] = useState("")
+  const [showBookmarked, setShowBookmarked] = useState(false)
 
   const toggleIsOpen = (id) => {
     setRecipes((prev) =>
@@ -119,12 +122,62 @@ export const Layout = () => {
       }),
     )
   }
+  const startSearch = () => {
+    if (search === "") {
+      setRecipes(DUMMY_RECIPE)
+    }
+    else {
+      let recipeFiltered = DUMMY_RECIPE.filter(recipe => {
+        let recipeName = recipe.name.toLowerCase()
+        let searchString = search.toLowerCase()
+
+        if (recipeName.includes(searchString)) {
+          return recipe
+        }
+      })
+      if (recipeFiltered.length > 0) {
+        setRecipes(recipeFiltered)
+      }
+      else {
+        console.error("Ошибка поиска")
+      }
+    }
+  }
+
+  const filterBookmarks = () => {
+    if (showBookmarked) {
+      const filteredRecipes = recipes.filter(recipe => recipe.isBooked === showBookmarked)
+      if (filteredRecipes.length > 0) {
+        return filteredRecipes
+      }
+
+    }
+    return recipes;
+  }
+
+  const toggleBookmarkedFilter = () => {
+    setShowBookmarked(prev => !prev)
+  }
+
+  const changeRecipeBookmark = (id) => {
+    setRecipes(prev => {
+      return prev.map(recipe => {
+        if (recipe.id === id) {
+          return { ...recipe, isBooked: !recipe.isBooked }
+        }
+        else {
+          return recipe
+        }
+      })
+    })
+  }
+
   return (
     <>
-      <Header />
+      <Header searchValue={search} changeSearch={setSearch} startSearch={startSearch} toggleBookmarkedFilter={toggleBookmarkedFilter} />
       <div className={styles.content}>
-        <AllRecipes recipes={recipes} toggleIsOpen={toggleIsOpen} />
-        <RecipeInfo recipe={recipes.find((recipe) => recipe.isOpen)} />
+        <AllRecipes recipes={filterBookmarks()} toggleIsOpen={toggleIsOpen} />
+        <RecipeInfo recipe={recipes.find((recipe) => recipe.isOpen)} changeBookmark={changeRecipeBookmark} />
       </div>
     </>
   )
